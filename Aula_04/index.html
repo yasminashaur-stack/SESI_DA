@@ -6,16 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-    <div style="background-color: blueviolet;"></div>
-    <div style="background-color: aqua;"></div>
-    <div style="background-color: blue;"></div>
+    <div id="grupo">
+    <div class="grupo-item"
+    style="background-color: blueviolet;">
+    </div>
+    <div class="grupo-item"
+    style="background-color: aqua;">
+</div>
+    <div class="grupo-item"
+    style="background-color: blue;">
+</div>
 </div>
     <style>
-     div {
+        #grupo{
+            display: flex;
+            justify-content: center;
+        }
+
+     .grupo-item {
         width: 200px;
         height: 200px;
-        border-radius: 20%;
+        border-radius: 50%;
         border: 10px solid black;
         margin: 10px;
      }

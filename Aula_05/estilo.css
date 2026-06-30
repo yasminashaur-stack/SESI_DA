@@ -1,0 +1,39 @@
+body{
+    background-color: rgb(235, 235, 235);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.caixa{
+    width: 1840px;
+    height: 880px;
+    background-color: white;
+
+    border: -1px solid rgb(255, 255, 255);
+    margin: 40px auto;
+    display: flex;
+}
+.esquerda{
+    height: 900px;
+    width: 45%;
+    background-image: url(pug.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 81%;
+}
+.direita{
+    width: 55%;
+    height: auto;
+    padding: 100px;
+}
+.foto{
+    width: 800px;
+    margin-left: 0px;
+        margin-top: -81px;
+
+ 
+}
+button img{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
+}

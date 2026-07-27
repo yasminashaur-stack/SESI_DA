@@ -14,6 +14,7 @@ body{
 .esquerda{
     height: 900px;
     width: 45%;
+    text-align: center;
     background-image: url(pug.png);
     background-repeat: no-repeat;
     background-size: cover;

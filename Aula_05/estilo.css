@@ -73,6 +73,7 @@ body {
     display: flex;
     color: white;
     border: 1px solid black;
+    text-decoration: none;
 }
 
 .btn:hover {

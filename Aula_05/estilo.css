@@ -50,6 +50,8 @@ body {
     width: 500px;
     border-radius: 52px;
     margin: 10px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .btn img {
@@ -69,4 +71,9 @@ body {
 
 .entrar-btn p{
     color: white;
+}
+
+.btn:hover{
+    background-color: aquamarine;
+    border-color: black;
 }

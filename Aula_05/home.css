@@ -51,6 +51,8 @@ header p {
     background-size: cover;
     border-radius: 34px;
     cursor: pointer;
+    transition-delay: 0.2s;
+    transition-duration: 0.2s, 0.2s;
 }
 
 .card:hover{
@@ -62,4 +64,49 @@ header p {
     padding-left: 25px;
     padding-top: 175px;
 
+}
+.grupo-anuncio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 430px;
+    margin-top: 50px;
+}
+
+.card-anuncio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 80%;
+    height: 80%;
+    border-radius: 70px;
+   
+}
+.anuncio-le{
+    width: 50%;
+    text-align: center;
+}
+
+.anuncio-le p{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.anuncio-le button{
+    font-size: 40px;
+    background-color: white;
+    height: 60px;
+    width: 50%;
+    border-radius: 50px;
+}
+.anuncio-ld{
+    width: 50%;
+    height: 80%;
+    background-image: url(gato_laranja.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 70px;
+    margin: 20px;
 }

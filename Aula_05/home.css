@@ -96,10 +96,12 @@ header p {
 
 .anuncio-le button{
     font-size: 40px;
-    background-color: white;
+    background-color: black;
+    color: white;
     height: 60px;
     width: 50%;
     border-radius: 50px;
+    cursor: pointer;
 }
 .anuncio-ld{
     width: 50%;

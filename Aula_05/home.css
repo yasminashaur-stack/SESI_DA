@@ -184,7 +184,7 @@ footer h1{
     text-transform: uppercase;
     margin-left: 20px;
     border-radius: 10px;
-    border: 0px;
+    border: 0px solid #EBC154;
     cursor: pointer;
 }
 
@@ -210,15 +210,18 @@ footer h1{
         font-size: 18px
     }
 
-    footer hr{
-    border-bottom: 1px solid white;
-    margin-top: -30px;
-    }
-    
-    .iten-selecionado{
+      .iten-selecionado{
         color: #EBC154;
         font-weight: bold;
     }
+
+    footer hr{
+        color: white;
+        border: 1px solid white;
+        margin-top: -30px;
+    }
+    
+  
     
     
     

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="campo" type="text">
+    <br>
+    <button onclick="digitar(9)">9</button>
+    <button onclick="digitar(8)">8</button>
+    <button onclick="digitar(7)">7</button>
+    <button onclick="digitar('/')">/</button>
+    <br>
+    <button onclick="digitar(4)">4</button>
+    <button onclick="digitar(5)">5</button>
+    <button onclick="digitar(6)">6</button>
+    <button onclick="digitar('*')">*</button>
+    <br>
+    <button onclick="digitar(1)">1</button>
+    <button onclick="digitar(2)">2</button>
+    <button onclick="digitar(3)">3</button>
+    <button onclick="digitar('-')">-</button>
+    <br>
+    <button onclick="digitar('=')">=</button>
+    <button onclick="digitar('+')">+</button>
+    <button onclick="digitar('delete')">delete</button>
+
+    <script>
+    function digitar(valor){
+        if (valor == "="){
+
+        document.getElementById("campo").value =
+        eval(document.getElementById("campo").value);
+        
+    }else if (valor == "delete"){
+        document.getElementById("campo").value = "";
+    }else{
+              document.getElementById("campo").value += valor;
+    }
+    }
+
+</script>
+
+</body>
+</html>

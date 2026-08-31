@@ -1,44 +1,283 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Minha Calculadora</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: Arial, sans-serif;
+        }
+
+        .calculadora {
+            width: 330px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .tela {
+            width: 100%;
+            height: 90px;
+            margin-bottom: 20px;
+            padding: 15px;
+
+            background-color: #2b2b2b;
+            border-radius: 15px;
+
+            color: white;
+            font-size: 40px;
+            text-align: right;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+        .botoes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            height: 60px;
+            border: none;
+            border-radius: 15px;
+
+            font-size: 24px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            background-color: #3a3a3a;
+            color: white;
+
+            transition: 0.15s;
+        }
+
+        button:hover {
+            background-color: #505050;
+            transform: scale(1.03);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .operacao {
+            background-color: #ff9500;
+            color: white;
+        }
+
+        .operacao:hover {
+            background-color: #ffad32;
+        }
+
+        .limpar {
+            background-color: #a5a5a5;
+            color: #111;
+        }
+
+        .igual {
+            background-color: #34c759;
+            color: white;
+        }
+
+        .igual:hover {
+            background-color: #4cd964;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>Calculadora</h1>
-    
-<input type="number" id="numero1" placeholder="primeiro número">
-<input type="number" id="numero2" placeholder="segundo número">
+    <div class="calculadora">
 
-<button onclick="calcular('+')">+</button>
-<button onclick="calcular('-')">-</button>
-<button onclick="calcular('*')">*</button>
-<button onclick="calcular('/')">/</button>
+        <!-- Tela -->
+        <div class="tela" id="tela">
+            0
+        </div>
 
-<h2>Resultado: <span id="Resultado">0</span></h2>
+        <!-- Botões -->
+        <div class="botoes">
 
-<script>
-    function calcular(operacao){
-        let numero1 = Number(document.getElementById("numero1".value));
-         let numero2 = Number(document.getElementById("numero2".value));
-         let Resultado;
-        
-         if (operacao === "+"){
-            Resultado = numero1 + numero2;
-         }
-         else if (operacao === "-"){
-            Resultado = numero1 - numero2;
-         }
-         else if (operacao === "*"){
-            Resultado = numero1 * numero2;
-         }
-         else if (operacao === "/"){
-           if(numero2 === 0)
-         }
-    }
-</script>
+            <button class="limpar" onclick="limpar()">C</button>
+            <button class="limpar" onclick="apagar()">⌫</button>
+            <button class="operacao" onclick="adicionarOperacao('%')">%</button>
+            <button class="operacao" onclick="adicionarOperacao('/')">÷</button>
+
+            <button onclick="adicionarNumero('7')">7</button>
+            <button onclick="adicionarNumero('8')">8</button>
+            <button onclick="adicionarNumero('9')">9</button>
+            <button class="operacao" onclick="adicionarOperacao('*')">×</button>
+
+            <button onclick="adicionarNumero('4')">4</button>
+            <button onclick="adicionarNumero('5')">5</button>
+            <button onclick="adicionarNumero('6')">6</button>
+            <button class="operacao" onclick="adicionarOperacao('-')">−</button>
+
+            <button onclick="adicionarNumero('1')">1</button>
+            <button onclick="adicionarNumero('2')">2</button>
+            <button onclick="adicionarNumero('3')">3</button>
+            <button class="operacao" onclick="adicionarOperacao('+')">+</button>
+
+            <button class="zero" onclick="adicionarNumero('0')">0</button>
+            <button onclick="adicionarNumero('.')">.</button>
+            <button class="igual" onclick="calcular()">=</button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let expressao = "";
+
+        const tela = document.getElementById("tela");
+
+
+        // Adiciona números
+        function adicionarNumero(numero) {
+
+            if (expressao === "Erro") {
+                expressao = "";
+            }
+
+            // Não deixa colocar dois pontos no mesmo número
+            if (numero === ".") {
+
+                let partes = expressao.split(/[\+\-\*\/%]/);
+                let numeroAtual = partes[partes.length - 1];
+
+                if (numeroAtual.includes(".")) {
+                    return;
+                }
+            }
+
+            expressao += numero;
+
+            atualizarTela();
+        }
+
+
+        // Adiciona operações
+        function adicionarOperacao(operacao) {
+
+            if (expressao === "Erro") {
+                expressao = "";
+            }
+
+            if (expressao === "") {
+                return;
+            }
+
+            // Não deixa colocar duas operações seguidas
+            let ultimo = expressao[expressao.length - 1];
+
+            if ("+-*/%".includes(ultimo)) {
+                expressao = expressao.slice(0, -1);
+            }
+
+            expressao += operacao;
+
+            atualizarTela();
+        }
+
+
+        // Calcula o resultado
+        function calcular() {
+
+            if (expressao === "") {
+                return;
+            }
+
+            try {
+
+                // Verifica se termina com uma operação
+                let ultimo = expressao[expressao.length - 1];
+
+                if ("+-*/%".includes(ultimo)) {
+                    expressao = expressao.slice(0, -1);
+                }
+
+                let resultado = eval(expressao);
+
+                if (!isFinite(resultado)) {
+                    expressao = "Erro";
+                } else {
+                    expressao = String(resultado);
+                }
+
+                atualizarTela();
+
+            } catch (erro) {
+
+                expressao = "Erro";
+                atualizarTela();
+
+            }
+        }
+
+
+        // Limpa a calculadora
+        function limpar() {
+
+            expressao = "";
+
+            atualizarTela();
+        }
+
+
+        // Apaga o último caractere
+        function apagar() {
+
+            if (expressao === "Erro") {
+                expressao = "";
+            } else {
+                expressao = expressao.slice(0, -1);
+            }
+
+            atualizarTela();
+        }
+
+
+        // Atualiza a tela
+        function atualizarTela() {
+
+            if (expressao === "") {
+                tela.textContent = "0";
+            } else {
+                tela.textContent = expressao
+                    .replace(/\*/g, "×")
+                    .replace(/\//g, "÷");
+            }
+
+        }
+
+    </script>
 
 </body>
+
 </html>

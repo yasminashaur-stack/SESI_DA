@@ -3,3 +3,8 @@
     padding: 20px;
     border-radius: 15px;
 }
+.botao {
+    width: 9%;
+    height: 80%;
+    background-color: cadetblue;
+}

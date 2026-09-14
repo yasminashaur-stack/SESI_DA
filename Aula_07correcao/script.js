@@ -1,20 +1,23 @@
 
+//true == X
+//false == O
 var ordem_jogada = true;
 
-function jogar(num_btn){
-    const botao = document.getElementById("num_btn");
 
-if (ordem_jogada === true){
-    botao.innerHTML = "o";
-   // ordem_jogada = false;
-}else{
-    botao.innerHTML = "x";
+function jogar(num_btn) {
+    const botao = document.getElementById(num_btn);
 
+    if (ordem_jogada === true) {
+        botao.innerHTML = "O";
+    } else {
+        botao.innerHTML = "X"
     }
 
-    ValidarGanhador();
+    validarGanhador();
+
     ordem_jogada = !ordem_jogada;
 }
+
 function validarGanhador() {
 
     const btn1_vlr = document.getElementById("1").innerHTML;
@@ -32,48 +35,82 @@ function validarGanhador() {
         && (btn1_vlr !== "")
         && (btn2_vlr !== "")
         && (btn3_vlr !== "")) {
-        alert("O ganhador foi " + ordem_jogada ? "X" : "O");
+        alert("O ganhador foi " + (ordem_jogada ? "O" : "X"));
+        limparJogo();
     } else if ((btn4_vlr == btn5_vlr)
         && (btn4_vlr == btn6_vlr)
         && (btn4_vlr !== "")
         && (btn5_vlr !== "")
         && (btn6_vlr !== "")) {
-        alert("O ganhador foi " + ordem_jogada ? "X" : "O");
+        alert("O ganhador foi " + (ordem_jogada ? "O" : "X"));
+        limparJogo();
     } else if ((btn7_vlr == btn8_vlr)
         && (btn7_vlr == btn9_vlr)
         && (btn7_vlr !== "")
         && (btn8_vlr !== "")
         && (btn9_vlr !== "")) {
-        alert("O ganhador foi " + ordem_jogada ? "X" : "O");
+        alert("O ganhador foi " + (ordem_jogada ? "O" : "X"));
+        limparJogo();
     } else if ((btn1_vlr == btn4_vlr)
         && (btn4_vlr == btn7_vlr)
         && (btn1_vlr !== "")
         && (btn4_vlr !== "")
         && (btn7_vlr !== "")) {
-        alert("O ganhador foi " + ordem_jogada ? "X" : "O");
+        alert("O ganhador foi " + (ordem_jogada ? "O" : "X"));
+        limparJogo();
     } else if ((btn2_vlr == btn5_vlr)
         && (btn2_vlr == btn8_vlr)
         && (btn2_vlr !== "")
         && (btn5_vlr !== "")
         && (btn8_vlr !== "")) {
-        alert("O ganhador foi " + ordem_jogada ? "X" : "O");
+        alert("O ganhador foi " + (ordem_jogada ? "O" : "X"));
+        limparJogo();
     } else if ((btn3_vlr == btn6_vlr)
         && (btn3_vlr == btn9_vlr)
         && (btn3_vlr !== "")
         && (btn6_vlr !== "")
         && (btn9_vlr !== "")) {
-        alert("O ganhador foi " + ordem_jogada ? "X" : "O");
+        alert("O ganhador foi " + (ordem_jogada ? "O" : "X"));
+        limparJogo();
     } else if ((btn1_vlr == btn5_vlr)
         && (btn1_vlr == btn9_vlr)
         && (btn1_vlr !== "")
         && (btn5_vlr !== "")
         && (btn9_vlr !== "")) {
-        alert("O ganhador foi " + ordem_jogada ? "X" : "O");
+        alert("O ganhador foi " + (ordem_jogada ? "O" : "X"));
+        limparJogo();
     } else if ((btn3_vlr == btn5_vlr)
         && (btn3_vlr == btn7_vlr)
         && (btn3_vlr !== "")
         && (btn5_vlr !== "")
         && (btn7_vlr !== "")) {
-        alert("O ganhador foi " + ordem_jogada ? "X" : "O");
+        alert("O ganhador foi " + (ordem_jogada ? "O" : "X"));
+        limparJogo();
+    } else if (
+        btn1_vlr !== ""
+        && btn2_vlr !== ""
+        && btn3_vlr !== ""
+        && btn4_vlr !== ""
+        && btn5_vlr !== ""
+        && btn6_vlr !== ""
+        && btn7_vlr !== ""
+        && btn8_vlr !== ""
+        && btn9_vlr !== ""
+    ) {
+        alert("Empate!");
+        limparJogo();
     }
 }
+function limparJogo() {
+    document.getElementById("1").innerHTML = "";
+    document.getElementById("2").innerHTML = "";
+    document.getElementById("3").innerHTML = "";
+    document.getElementById("4").innerHTML = "";
+    document.getElementById("5").innerHTML = "";
+    document.getElementById("6").innerHTML = "";
+    document.getElementById("7").innerHTML = "";
+    document.getElementById("8").innerHTML = "";
+    document.getElementById("9").innerHTML = "";
+}
+
+

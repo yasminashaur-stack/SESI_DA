@@ -1,18 +1,26 @@
 
 //true == X
 //false == O
+
+
+var pontosO = 0;
+var pontosX = 0;
+
 var ordem_jogada = true;
 
 
 function jogar(num_btn) {
     const botao = document.getElementById(num_btn);
 
+    **if (botao.innerHTML !== "") {
+        return;
+    }**
+
     if (ordem_jogada === true) {
         botao.innerHTML = "O";
     } else {
         botao.innerHTML = "X"
     }
-
     validarGanhador();
 
     ordem_jogada = !ordem_jogada;

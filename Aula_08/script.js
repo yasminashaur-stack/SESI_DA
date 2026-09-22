@@ -43,16 +43,26 @@ function recuperar_senha() {
     const campo_nome = document.getElementById("nome").value;
     const campo_palavrapasse = document.getElementById("palavrapasse").value;
 
-    const local_nome = document.localStorage("nome");
-    const local_palavra_passe = document.getElementById("palavra_passe");
+    const local_nome = localStorage.getItem("nome");
+    const local_palavrapasse = document.getItem("palavrapasse");
 
     if (campo_nome == local_nome && campo_palavrapasse == local_palavrapasse){
         alert("Sua senha é: " + localStorage.getItem("senha"));
     }else{
+        let quantidade_erros = Number(localStorage.getItem("quantidade_erros")) || 0;
+
         alert("Dados incorreto!");
+        campo_nome = "";
+        local_palavrapasse = "";
+        nova_senha = "";
+
+        quantidade_erros++;
+        localStorage.setItem("quantidade_erros", quantidade_erros);
+
         document.getElementById("nome").value = "";
         document.getElementById("palavra_passe").value = "";
     }
+    
     // 1º Carregar os valores dos campos NOME e PALAVRA-PASSE
 
 
@@ -83,3 +93,4 @@ function recuperar_senha() {
 // Lembrem-se de salvar a quantidade de erros no localStorage.
 
 }
+

@@ -247,18 +247,3 @@ footer h1{
     
     
     
-    
-    
-    ;
-}
-
-.menu-itens ul{ 
-    display: flex;
-    margin-right: 50px;
-}
-
-.meno-itens li{
-    margin-left: 40px;
-    list-style-type: none;
-    font-size: 18px;
-}

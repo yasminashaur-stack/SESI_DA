@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de indicadores</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="caixa-login">
+  <h1>🏫 ESCOLA NOVA ERA</h1>
+    <h2>Painel de indicadores</h2>
+
+    <label for="usuario">Usuário</label>
+    <input id="usuario" type="text"> 
+<br>
+<br>
+    <label for="senha">Senha</label>
+    <input id="senha" type="password">
+<br>
+<br>
+    <button>Entrar</button>
+    </div>
+
+  <div id="tela-lista" style="display:none;">
+    <h1>🏫 Painel de indicadores</h1>
+    <button id="btn-adicionar">Adicionar aluno</button>
+    <table id="tabela-lista">
+        <thead>
+            <tr><th>Nome</th><th>Faltas</th><th>Ação</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<!-- TELA: detalhe de um aluno -->
+<div id="tela-detalhe" style="display:none;">
+    <button id="btn-voltar">← Voltar</button>
+    <h2 id="detalhe-nome"></h2>
+    <table id="tabela-detalhe">
+        <thead>
+            <tr><th>Matéria</th><th>1º tri.</th><th>2º tri.</th><th>3º tri.</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -4,8 +4,8 @@ body {
         display: flex;
     flex-direction: column;
     gap: -4px;
-    justify-content: center; /* centraliza na horizontal */
-    align-items: center;     /* centraliza na vertical */
+    justify-content: center; 
+    align-items: center;     
     font-family: sans-serif;
     background-color: #266daf;
 }

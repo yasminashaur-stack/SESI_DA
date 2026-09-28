@@ -2,7 +2,7 @@
 const materias = ["Português", "Matemática", "Ciências"];
 
 
-let alunos = [
+const alunosPadrao = [
     {
         nome: "Ana Souza",
         faltas: 3,
@@ -35,20 +35,37 @@ let alunos = [
     }
 ];
 
+let alunos = alunosPadrao;
+const salvos = localStorage.getItem("alunos");
+if (salvos) {
+    alunos = JSON.parse(salvos);
+}
+function salvar() {
+    localStorage.setItem("alunos", JSON.stringify(alunos));
+}
+
+if (!localStorage.getItem("usuario")) {
+    localStorage.setItem("usuario", "diretor");
+    localStorage.setItem("senha", "1234");
+}
 
 const btnEntrar = document.querySelector(".caixa-login button");
 const telaLogin = document.querySelector(".caixa-login");
 const telaLista = document.getElementById("tela-lista");
 
+
+
 btnEntrar.addEventListener("click", function () {
     const usuario = document.getElementById("usuario").value;
     const senha = document.getElementById("senha").value;
 
-    if (usuario === "diretor" && senha === "1234") {
+    const usuarioCerto = localStorage.getItem("usuario");
+    const senhaCerta = localStorage.getItem("senha");
+
+    if (usuario === usuarioCerto && senha === senhaCerta) {
         telaLogin.style.display = "none";
         telaLista.style.display = "block";
         renderizarLista();
-
     } else {
         alert("Usuário ou senha incorretos!");
     }
@@ -59,6 +76,16 @@ const tbodyLista = document.querySelector("#tabela-lista tbody");
 
 function renderizarLista() {
     tbodyLista.innerHTML = "";
+
+    if (alunos.length === 0) {
+    const linha = document.createElement("tr");
+    const td = document.createElement("td");
+    td.colSpan = 3;
+    td.textContent = "Nenhum aluno cadastrado.";
+    linha.appendChild(td);
+    tbodyLista.appendChild(linha);
+    return;
+}
 
     alunos.forEach((aluno, indice) => {
         const linha = document.createElement("tr");
@@ -78,10 +105,16 @@ function renderizarLista() {
         const btnExcluir = document.createElement("button");
         btnExcluir.textContent = "Excluir";
         btnExcluir.className = "btn-excluir";
+
         btnExcluir.addEventListener("click", function () {
-            alunos.splice(indice, 1);
-            renderizarLista();
-        });
+            const certeza = confirm("Atenção! Tem certeza que quer excluir " + aluno.nome + "?");
+
+        if (certeza) {
+        alunos.splice(indice, 1);
+         salvar();    
+        renderizarLista();
+        }
+    });
         tdAcao.appendChild(btnExcluir);
 
         linha.appendChild(tdNome);
@@ -107,8 +140,7 @@ function abrirDetalhe(indice) {
             <td>${materia}</td>
             <td>${notasMateria[0]}</td>
             <td>${notasMateria[1]}</td>
-            <td>${notasMateria[2]}</td>
-        `;
+            <td>${notasMateria[2]}</td>`;
         tbodyDetalhe.appendChild(linha);
     });
 
@@ -120,3 +152,26 @@ document.getElementById("btn-voltar").addEventListener("click", function () {
     telaDetalhe.style.display = "none";
     telaLista.style.display = "block";
 });
+
+document.getElementById("btn-adicionar").addEventListener("click", function () {
+    const nome = prompt("Nome do aluno:");
+    if (!nome) {
+        return;
+    }
+
+    const faltas = parseInt(prompt("Quantas faltas ele tem?")) || 0;
+
+    const notas = {};
+    materias.forEach(function (materia) {
+        notas[materia] = [];
+        for (let tri = 1; tri <= 3; tri++) {
+            const nota = parseFloat(prompt("Nota de " + materia + " no " + tri + "º trimestre:"));
+            notas[materia].push(nota || 0);
+        }
+    });
+
+    alunos.push({ nome: nome, faltas: faltas, notas: notas });
+    salvar();
+    renderizarLista();
+});
+//localStorage.clear()

@@ -16,22 +16,22 @@ let alunos = [
         {
         nome: "Carla Mendes",
         faltas: 5,
-        notas: { "Português": [9.0, 8.8, 10], "Matemática": [7.0, 8.0, 9.0], "Ciências": [8, 7, 9] }
+        notas: { "Português": [9.0, 8.8, 10], "Matemática": [7.0, 8.0, 9.0], "Ciências": [8.2, 7.0, 9.0] }
     },
     {
         nome: "Diego Alves",
         faltas: 0,
-        notas: { "Português": [6, 7, 6], "Matemática": [8, 9, 9], "Ciências": [6, 6, 7] }
+        notas: { "Português": [6.0, 7.7, 6.0], "Matemática": [8.0, 9.9, 9.0], "Ciências": [6.0, 6.5, 7.0] }
     },
     {
         nome: "Elisa Ferreira",
         faltas: 2,
-        notas: { "Português": [10, 9, 10], "Matemática": [9, 9, 10], "Ciências": [10, 10, 9] }
+        notas: { "Português": [10, 9.9, 10], "Matemática": [9.2, 9.0, 10], "Ciências": [10, 10, 9.7] }
     },
     {
         nome: "Felipe Costa",
         faltas: 7,
-        notas: { "Português": [5, 6, 5], "Matemática": [4, 5, 6], "Ciências": [5, 6, 5] }
+        notas: { "Português": [5.0, 6.4, 5.0], "Matemática": [4.4, 5.0, 6.0], "Ciências": [5.1, 6.0, 5.7] }
     }
 ];
 
